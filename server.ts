@@ -9,7 +9,7 @@ app.use(cors());
 
 const port = 3000;
 
-const mongoDB = 'mongodb+srv://aishwaryadhatrak:Aishu%4069696@cluster0.kfqs6ws.mongodb.net/?retryWrites=true&w=majority';
+const mongoDB = 'YourMOngoURL';
 mongoose.connect(mongoDB).then(() => {
     console.log("Connected to MongoDB");
 }).catch(err => {
@@ -25,7 +25,7 @@ app.get('/weather', async (req, res) => {
 
   if (city) {
     currentCity = city as string;  // assert that city is a string
-    const apiKey = 'e71c1740fa171b936f30f5a6659faf10';
+    const apiKey = 'openweather api key';
     
     try {
       const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
@@ -65,7 +65,7 @@ app.listen(port, () => {
 
 // Fetch weather data from OpenWeatherMap API every 1 minutes and save it to MongoDB
 setInterval(async () => {
-  const apiKey = 'e71c1740fa171b936f30f5a6659faf10';
+  const apiKey = 'openweather api key';
 
   try {
     if (currentCity) {
